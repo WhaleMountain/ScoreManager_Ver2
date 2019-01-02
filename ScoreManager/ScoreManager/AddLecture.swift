@@ -7,6 +7,11 @@
 
 import UIKit
 
+var LectureTime = [String]() // 講義の時限が保存される
+var LectureWeek = [String]() // 講義の曜日が保存される
+var LectureName = [String]() // 講義名などが保存される
+var LectureAbsence = [Int]() // 講義の欠席数が保存される
+
 class AddLecture: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource {
     
     let week = ["月曜","火曜","水曜","木曜","金曜"]
@@ -24,6 +29,18 @@ class AddLecture: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource 
     }
     
     @IBOutlet weak var SaveButton: UIBarButtonItem!
+    @IBAction func SaveLecture(_ sender: Any) {
+        LectureName.append(LectureNameField.text!) //講義名の保存
+        LectureWeek.append(tmpWeek)         //曜日の保存
+        LectureTime.append(tmpTime)         //時限の保存
+        LectureAbsence.append(0)
+        LectureNameField.text = ""
+        
+        UserDefaults.standard.set( LectureName, forKey: "LName" )
+        UserDefaults.standard.set( LectureWeek, forKey: "LWeek" )
+        UserDefaults.standard.set( LectureTime, forKey: "LTime" )
+        UserDefaults.standard.set( LectureAbsence, forKey: "LAbsence" )
+    }
     
     // 表示数 (PickerViewの列数)
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

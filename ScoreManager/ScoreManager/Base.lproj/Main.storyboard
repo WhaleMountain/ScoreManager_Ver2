@@ -128,6 +128,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="kor-X3-R8p">
                                             <connections>
+                                                <action selector="SaveLecture:" destination="AA6-Ct-H6X" id="myb-l0-68w"/>
                                                 <segue destination="BYZ-38-t0r" kind="show" id="8d6-o5-AIH"/>
                                             </connections>
                                         </barButtonItem>
