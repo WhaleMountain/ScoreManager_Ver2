@@ -35,11 +35,6 @@ class AddLecture: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource 
         LectureTime.append(tmpTime)         //時限の保存
         LectureAbsence.append(0)
         LectureNameField.text = ""
-        
-        UserDefaults.standard.set( LectureName, forKey: "LName" )
-        UserDefaults.standard.set( LectureWeek, forKey: "LWeek" )
-        UserDefaults.standard.set( LectureTime, forKey: "LTime" )
-        UserDefaults.standard.set( LectureAbsence, forKey: "LAbsence" )
     }
     
     // 表示数 (PickerViewの列数)

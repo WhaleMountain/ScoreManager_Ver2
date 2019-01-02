@@ -85,7 +85,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TodoCell" id="9hg-O0-AMp">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LectureCell" id="9hg-O0-AMp">
                                         <rect key="frame" x="0.0" y="28" width="728" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9hg-O0-AMp" id="K7N-yI-Q9L">
@@ -94,6 +94,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="z1A-lg-3QL"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="pdV-ST-jAr"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -129,7 +133,6 @@
                                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="kor-X3-R8p">
                                             <connections>
                                                 <action selector="SaveLecture:" destination="AA6-Ct-H6X" id="myb-l0-68w"/>
-                                                <segue destination="BYZ-38-t0r" kind="show" id="8d6-o5-AIH"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
