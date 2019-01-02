@@ -14,6 +14,7 @@
 		A634C076219D0C1B001CD6CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A634C074219D0C1B001CD6CF /* LaunchScreen.storyboard */; };
 		A634C081219D0C1B001CD6CF /* ScoreManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A634C080219D0C1B001CD6CF /* ScoreManagerTests.swift */; };
 		A634C08C219D0C1B001CD6CF /* ScoreManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A634C08B219D0C1B001CD6CF /* ScoreManagerUITests.swift */; };
+		A6E9906B21DC902400D40581 /* AddLecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E9906A21DC902400D40581 /* AddLecture.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		A634C087219D0C1B001CD6CF /* ScoreManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScoreManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A634C08B219D0C1B001CD6CF /* ScoreManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreManagerUITests.swift; sourceTree = "<group>"; };
 		A634C08D219D0C1B001CD6CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6E9906A21DC902400D40581 /* AddLecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLecture.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				A634C06B219D0C1A001CD6CF /* AppDelegate.swift */,
 				A634C06D219D0C1A001CD6CF /* ViewController.swift */,
 				A634C06F219D0C1A001CD6CF /* Main.storyboard */,
+				A6E9906A21DC902400D40581 /* AddLecture.swift */,
 				A634C072219D0C1B001CD6CF /* Assets.xcassets */,
 				A634C074219D0C1B001CD6CF /* LaunchScreen.storyboard */,
 				A634C077219D0C1B001CD6CF /* Info.plist */,
@@ -256,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A634C06E219D0C1A001CD6CF /* ViewController.swift in Sources */,
+				A6E9906B21DC902400D40581 /* AddLecture.swift in Sources */,
 				A634C06C219D0C1A001CD6CF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
