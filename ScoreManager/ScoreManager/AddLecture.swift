@@ -35,6 +35,7 @@ class AddLecture: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource 
         LectureTime.append(tmpTime)         //時限の保存
         LectureAbsence.append(0)
         LectureNameField.text = ""
+        self.performSegue(withIdentifier:"MainMemu", sender: nil) // メインメニュー(講義リストがあるとこ)に画面遷移!!
     }
     
     // 表示数 (PickerViewの列数)

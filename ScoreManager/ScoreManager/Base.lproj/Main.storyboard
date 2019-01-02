@@ -130,9 +130,9 @@
                                                 <segue destination="BYZ-38-t0r" kind="show" id="nQL-Rb-Ymc"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="kor-X3-R8p">
+                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="WXX-4I-pgq">
                                             <connections>
-                                                <action selector="SaveLecture:" destination="AA6-Ct-H6X" id="myb-l0-68w"/>
+                                                <action selector="SaveLecture:" destination="AA6-Ct-H6X" id="hug-a8-PSh"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -174,9 +174,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="j9z-rK-Tdo"/>
                     </view>
+                    <navigationItem key="navigationItem" id="GcY-Tq-zD3"/>
                     <connections>
                         <outlet property="LectureNameField" destination="bom-09-gDN" id="kp2-cd-yvI"/>
-                        <outlet property="SaveButton" destination="kor-X3-R8p" id="FxH-uA-mgB"/>
+                        <outlet property="SaveButton" destination="WXX-4I-pgq" id="IAG-ds-FjA"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="MainMemu" id="iuB-AJ-IXi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yF1-jT-Y5T" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -186,6 +188,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="NNj-mr-kVO"/>
-        <segue reference="nQL-Rb-Ymc"/>
+        <segue reference="iuB-AJ-IXi"/>
     </inferredMetricsTieBreakers>
 </document>
