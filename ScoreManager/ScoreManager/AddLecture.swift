@@ -50,13 +50,30 @@ class AddLecture: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource 
             return time.count
         }
     }
-    // 値の表示
-    func pickerView(_ pickerView: UIPickerView,titleForRow row: Int,forComponent component: Int) -> String? {
+    
+    // セルの高さの変更
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         if component == 0 {
-            return week[row]
-            
+            return 45
         } else {
-            return time[row]
+            return 45
+        }
+    }
+    
+    // 値の表示
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        if component == 0 {
+            let label1 = UILabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 100))
+            label1.textAlignment = .center
+            label1.text = week[row]
+            label1.font = UIFont(name: "Times",size:30)
+            return label1//week[row]
+        } else {
+            let label2 = UILabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 100))
+            label2.textAlignment = .center
+            label2.text = time[row]
+            label2.font = UIFont(name: "Times",size:30)
+            return label2//time[row]
         }
     }
     // pickerが選択された際に呼ばれるデリゲートメソッド.

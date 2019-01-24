@@ -11,6 +11,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     @IBOutlet weak var NowDate: UILabel!
     @IBOutlet weak var NowWeekDay: UILabel!
     
+    var name: String = ""
+    var weeek:String = ""
+    var timee:String = ""
+    var absencePath:Int = 0
+    
     // 講義数のカウント
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return LectureName.count
@@ -20,6 +25,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let LectureCell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "LectureCell", for: indexPath)
         LectureCell.textLabel!.text = LectureName[indexPath.row]
+        LectureCell.textLabel?.font = UIFont.systemFont(ofSize: 30)
         return LectureCell
     }
     
@@ -45,6 +51,27 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         alert.addAction(DeleteAction)
         alert.addAction(CanselAction)
         present(alert, animated: true, completion: nil)
+    }
+    
+    
+    /// セル選択時
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        name = LectureName[indexPath.row]
+        weeek = LectureWeek[indexPath.row]
+        timee = LectureTime[indexPath.row]
+        absencePath = indexPath.row
+        performSegue(withIdentifier: "segue", sender: nil)
+    }
+    
+    // showlecture to set lectureName
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segue" {
+            let SL = segue.destination as! ShowLecture // SLはShowLectureの略
+            SL.receiveName = name
+            SL.receiveWeek = weeek
+            SL.receiveTime = timee
+            SL.absenceRow = absencePath
+        }
     }
     
     func weekday(){ //現在の曜日を求める.
