@@ -54,9 +54,9 @@ class AddLecture: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource 
     // セルの高さの変更
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         if component == 0 {
-            return 45
+            return 50
         } else {
-            return 45
+            return 50
         }
     }
     
@@ -66,13 +66,15 @@ class AddLecture: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource 
             let label1 = UILabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 100))
             label1.textAlignment = .center
             label1.text = week[row]
-            label1.font = UIFont(name: "Times",size:30)
+            label1.font = UIFont(name: "Times",size:40)
+            label1.textColor = .white
             return label1//week[row]
         } else {
             let label2 = UILabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 100))
             label2.textAlignment = .center
             label2.text = time[row]
-            label2.font = UIFont(name: "Times",size:30)
+            label2.font = UIFont(name: "Times",size:40)
+            label2.textColor = .white
             return label2//time[row]
         }
     }
@@ -90,6 +92,28 @@ class AddLecture: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource 
     override func viewDidLoad() {
         SaveButton.isEnabled = false
         super.viewDidLoad()
+        SaveButton.isEnabled = false
+        super.viewDidLoad()
+        //グラデーションの開始色
+        let topColor = UIColor(red: 156/255, green: 39/255, blue: 176/255, alpha:1)
+        //グラデーションの中間色
+        let borderColor = UIColor(red: 32/255, green: 76/255, blue: 255/255, alpha:1)
+        //グラデーションの開始色
+        let bottomColor = UIColor(red: 58/255, green: 255/255, blue: 217/255, alpha:1)
+        
+        //グラデーションの色を配列で管理
+        let gradientColors: [CGColor] = [topColor.cgColor,borderColor.cgColor, bottomColor.cgColor]
+        
+        //グラデーションレイヤーを作成
+        let gradientLayer: CAGradientLayer = CAGradientLayer()
+        
+        //グラデーションの色をレイヤーに割り当てる
+        gradientLayer.colors = gradientColors
+        //グラデーションレイヤーをスクリーンサイズにする
+        gradientLayer.frame = self.view.bounds
+        
+        //グラデーションレイヤーをビューの一番下に配置
+        self.view.layer.insertSublayer(gradientLayer,at: 0)
     }
     
     override func didReceiveMemoryWarning() {
