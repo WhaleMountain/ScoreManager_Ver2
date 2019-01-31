@@ -30,12 +30,36 @@ class AddLecture: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource 
     
     @IBOutlet weak var SaveButton: UIBarButtonItem!
     @IBAction func SaveLecture(_ sender: Any) {
-        LectureName.append(LectureNameField.text!) //講義名の保存
-        LectureWeek.append(tmpWeek)         //曜日の保存
-        LectureTime.append(tmpTime)         //時限の保存
-        LectureAbsence.append(0)
-        LectureNameField.text = ""
-        self.performSegue(withIdentifier:"MainMemu", sender: nil) // メインメニュー(講義リストがあるとこ)に画面遷移!!
+        if(overlap() == true){
+            overlap_alert() // 警告が表示される
+        }else{
+            LectureName.append(LectureNameField.text!) // 講義名の保存
+            LectureWeek.append(tmpWeek) // 曜日の保存
+            LectureTime.append(tmpTime) // 時限の保存
+            LectureAbsence.append(0)
+            LectureNameField.text = ""
+            self.performSegue(withIdentifier:"MainMemu", sender: nil) // メインメニュー(講義リストがあるとこ)に画面遷移!!
+        }
+    }
+    
+    // 重複を判定する
+    func overlap() -> Bool{
+        for i in 0..<LectureName.count{
+            if LectureWeek[i] == tmpWeek && LectureTime[i] == tmpTime{
+                return true // 重複あり
+            }
+        }
+        return false // 重複なし
+    }
+    
+    func overlap_alert(){
+        let alert: UIAlertController = UIAlertController(title: "注意", message: "講義時間が重複しています", preferredStyle:UIAlertController.Style.alert)
+        // OK 何もしない
+        let okAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{
+            (action: UIAlertAction!) -> Void in
+        })
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
     
     // 表示数 (PickerViewの列数)
