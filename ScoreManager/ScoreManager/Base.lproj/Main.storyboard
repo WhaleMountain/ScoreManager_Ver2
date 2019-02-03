@@ -31,7 +31,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="edit" id="Uj3-09-tof">
                                             <connections>
-                                                <segue destination="AA6-Ct-H6X" kind="show" id="oeZ-34-FDl"/>
+                                                <action selector="EditButton:" destination="JKB-sk-AsV" id="PNx-Uh-oGE"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -94,6 +94,7 @@
                         <outlet property="ShowLectureAbsence" destination="qAW-Hn-yL0" id="wpQ-j5-VvA"/>
                         <outlet property="ShowLectureName" destination="81a-ms-uYP" id="deS-VX-WbR"/>
                         <outlet property="ShowLectureTime" destination="TO2-fo-X3g" id="2ZZ-Ih-aeK"/>
+                        <segue destination="AA6-Ct-H6X" kind="show" identifier="EditMemu" id="yVd-Hj-tYm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VR8-eS-iWD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -236,6 +237,7 @@
                     <connections>
                         <outlet property="LectureNameField" destination="bom-09-gDN" id="kp2-cd-yvI"/>
                         <outlet property="SaveButton" destination="WXX-4I-pgq" id="IAG-ds-FjA"/>
+                        <outlet property="pv" destination="cNt-IH-cmd" id="KyS-5T-FUH"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="MainMemu" id="iuB-AJ-IXi"/>
                     </connections>
                 </viewController>
@@ -245,8 +247,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="NNj-mr-kVO"/>
-        <segue reference="fyJ-8W-Lra"/>
+        <segue reference="yVd-Hj-tYm"/>
+        <segue reference="iuB-AJ-IXi"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
 </document>
