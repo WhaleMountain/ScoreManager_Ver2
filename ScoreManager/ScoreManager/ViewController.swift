@@ -70,7 +70,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             SL.receiveName = name
             SL.receiveWeek = weeek
             SL.receiveTime = timee
-            SL.absenceRow = absencePath
+            SL.arrayRow = absencePath
         }
     }
     

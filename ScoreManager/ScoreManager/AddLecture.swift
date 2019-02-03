@@ -14,6 +14,12 @@ var LectureAbsence = [Int]() // 講義の欠席数が保存される
 
 class AddLecture: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource {
     
+    var setLectureName = ""
+    var weekrow = 0
+    var timerow = 0
+    var arrayRow = 0
+    var absenceCnt = 0
+    var take_over = 0
     let week = ["月曜","火曜","水曜","木曜","金曜"]
     let time = ["1","2","3","4","5"]
     var tmpWeek = "月曜" // 曜日を一時的に保存する
@@ -32,6 +38,14 @@ class AddLecture: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource 
     @IBAction func SaveLecture(_ sender: Any) {
         if(overlap() == true){
             overlap_alert() // 警告が表示される
+        }else if(take_over == 1){ // 引き継ぎ(講義の編集)の際, 値の上書き
+            LectureName[arrayRow] = LectureNameField.text! // 講義名の上書き
+            LectureWeek[arrayRow] = tmpWeek // 曜日の上書き
+            LectureTime[arrayRow] = tmpTime // 時限の上書き
+            LectureAbsence[arrayRow] = absenceCnt // 欠席数の引き継ぎ
+            LectureNameField.text = ""
+            take_over = 0 // 引き継ぎを0に変更
+            self.performSegue(withIdentifier:"MainMemu", sender: nil) // メインメニュー(講義リストがあるとこ)に画面遷移!!
         }else{
             LectureName.append(LectureNameField.text!) // 講義名の保存
             LectureWeek.append(tmpWeek) // 曜日の保存
@@ -44,9 +58,19 @@ class AddLecture: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource 
     
     // 重複を判定する
     func overlap() -> Bool{
-        for i in 0..<LectureName.count{
-            if LectureWeek[i] == tmpWeek && LectureTime[i] == tmpTime{
-                return true // 重複あり
+        if(take_over == 0){ // 講義追加の時
+            for i in 0..<LectureName.count{
+                if(LectureWeek[i] == tmpWeek && LectureTime[i] == tmpTime){
+                    return true // 重複あり
+                }
+            }
+        }else if(take_over == 1){ // 講義編集の時
+            for i in 0..<LectureName.count{
+                if(arrayRow == i) {
+                    continue
+                }else if(LectureWeek[i] == tmpWeek && LectureTime[i] == tmpTime){
+                    return true // 重複あり
+                }
             }
         }
         return false // 重複なし
@@ -62,6 +86,7 @@ class AddLecture: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource 
         present(alert, animated: true, completion: nil)
     }
     
+    @IBOutlet weak var pv: UIPickerView!
     // 表示数 (PickerViewの列数)
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
@@ -86,7 +111,7 @@ class AddLecture: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource 
     
     // 値の表示
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        if component == 0 {
+            if component == 0 {
             let label1 = UILabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 100))
             label1.textAlignment = .center
             label1.text = week[row]
@@ -109,14 +134,16 @@ class AddLecture: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource 
         } else {
             tmpTime = time[row]
         }
-        
     }
     
     // 表示の処理
     override func viewDidLoad() {
-        SaveButton.isEnabled = false
-        super.viewDidLoad()
-        SaveButton.isEnabled = false
+        LectureNameField.text = setLectureName // 講義編集の時, 入力した講義名に上書きする
+        if(LectureNameField.text == ""){ // 講義の変更の時以外はデフォルトでSaveボタンを押せなくする
+            SaveButton.isEnabled = false
+        }
+        pv.selectRow(weekrow, inComponent: 0, animated: true) // 講義の編集の時, 選択した曜日を初期値にする
+        pv.selectRow(timerow, inComponent: 1, animated: true) // 講義の編集の時, 選択した時限を初期値にする
         super.viewDidLoad()
         //グラデーションの開始色
         let topColor = UIColor(red: 156/255, green: 39/255, blue: 176/255, alpha:1)
